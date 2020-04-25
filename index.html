@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" >
+        
+        <title>Numero primo</title>
+    </head>
+    <body>
+        <div class="container">
+            <div class="card text-left">
+                <div style="text-align:center" class="card-header">
+                    MANUEL ERNESTO TURCIOS CORTEZ
+                </div>
+                <div class="card-body">
+                    <h5 style="text-align:center" class="card-title">PAGINA WEB PARA DETERMINAR SI UN NUMERO ES PRIMO O NO</h5>
+                    <form id="fmCalNumPrimo" action=""  method="POST">
+                        <div class="form-group"> 
+                            <br>
+                            <br>
+                            <table>
+                                <thread>  
+                                    <th scope="col"><label for="txtNumPrimo">INGRESAR NUMERO :</label>
+                                        <input type="number" class="form-control" id="txtNumPrimo" name="txtNumPrimo" ></th>
+                            </table>
+                            <br>  
+                            <input type="button" class="btn btn-primary" onclick="calcular()" value="enviar">
+                            <br>
+                            <br>
+                            <div id="resultado" class="alert alert-info">        
+                            </div>
+                        </div>
+                    </form>
+                </div>  
+        </div> 
+    </div> 
+        <script src="https://code.jquery.com/jquery-3.4.1.min.js" ></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" ></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+        <script>
+                    function calcular()
+                    {
+                        $.ajax({
+                            url: "Procesar.jsp",
+                            type: "POST",
+                            dataType: "script",
+                            data:  $("fmCalNumPrimo").serialize(),
+                            
+                            
+                                success: function(result){
+                                 $("#resultado").html(result);
+                             },
+                                error: function (error)
+                                {
+                                   $("#resultado").html("Error:"+error+"Consultar COn el ADMINISTRADOR") ;
+                                }
+                        });
+                    }
+        </script>
+    </body>
+</html>
